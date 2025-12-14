@@ -30,7 +30,6 @@ area_rectangle = length_rectangle * width_rectangle
 perimeter_rectangle = 2 * (length_rectangle + width_rectangle)
 print('矩形的周长是:', perimeter_rectangle, '\n矩形的面积是:', area_rectangle)
 
-
 # 提示用户输入圆的半径。计算面积（面积 = pi x r x r）和周长（周长 = 2 x pi x r），其中 pi = 3.14。
 pi = math.pi
 r_circle = float(input('请输入圆的半径：'))
@@ -63,6 +62,8 @@ print('Euclid', c, d, ':', Euclid_cd)
 # 定义函数
 def calculate_y(x):
     return x ** 2 + 6 * x + 9
+
+
 # 创建测试的 x 值
 x_values = np.arange(-6, 1, 1)
 # 计算对应的 y 值
@@ -81,29 +82,29 @@ print(y_is_zero)
 # 使用 and 运算符检查 'python' 和 'dragon' 中是否都有 'on'。
 if 'on' in 'python' and 'on' in 'dragon':
     print(True)
-else:print(False)
+else:
+    print(False)
 
 # 找到文本 python 的长度，并将该值转换为浮点数，然后将其转换为字符串。
 length_txt_int = len('python')
 l_float = float(length_txt_int)
 l_str = str(l_float)
-print('length_txt_int',length_txt_int,type(length_txt_int))
-print('l_float',l_float,type(l_float))
-print('l_str',l_str,type(l_str))
-
+print('length_txt_int', length_txt_int, type(length_txt_int))
+print('l_float', l_float, type(l_float))
+print('l_str', l_str, type(l_str))
 
 # 偶数可以被 2 整除，余数为零。如何使用 Python 检查一个数字是偶数还是奇数？
 num_int = int(input('请输入一个整数：\n'))
-if num_int%2 == 0 :
-    print(num_int,'是一个偶数')
-else:print(num_int,'不是一个偶数')
+if num_int % 2 == 0:
+    print(num_int, '是一个偶数')
+else:
+    print(num_int, '不是一个偶数')
 
 # 检查 7 除以 3 的Floor除法是否等于 2.7 的整数转换值。
-if 7//3 == int(2.7):
+if 7 // 3 == int(2.7):
     print('7 除以 3 的Floor除法等于 2.7 的整数转换值')
 else:
     print('7 除以 3 的Floor除法不等于 2.7 的整数转换值')
-
 
 # 检查 '10' 的类型是否等于 10 的类型。
 
@@ -111,7 +112,6 @@ if type('10') == type(10):
     print(' ''10'' 的类型等于 10 的类型')
 else:
     print(' ''10'' 的类型不等于 10 的类型')
-
 
 # 检查 int('9.8') 是否等于 10。
 if type('9.8') == 'int':
@@ -127,7 +127,6 @@ work_time = int(input('请输入你的工时：\n'))
 pay_per_time = int(input('请输入你的时薪：\n'))
 print('你的工资是：', work_time * pay_per_time)
 
-
 # 编写一个脚本，提示用户输入年数。计算一个人还可以活多少秒。假设一个人可以活一百年
 now_year = int(input('请输入当前年龄：'))
 if now_year >= 100:
@@ -136,13 +135,9 @@ else:
     residue_life = (100 - now_year) * 365 * 24 * 60 * 60
     print('你还能够活', residue_life, 's')
 
-
 # 编写一个 Python 脚本，显示以下表格
 tab = [1, 1, 1, 1, 1, 2, 1, 2, 4, 8, 3, 1, 3, 9, 27, 4, 1, 4, 16, 64, 5, 1, 5, 25, 125]
 for i in range(0, 5):
-    for j in range(0,5):
-        print(tab[i*5+j],end=' ')
+    for j in range(0, 5):
+        print(tab[i * 5 + j], end=' ')
     print()
-
-
-
