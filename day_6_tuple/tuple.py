@@ -47,8 +47,6 @@ except:
     print('不存在项目了')
 # 检查 'Estonia' 是否在 nordic_country 元组中
 nordic_countries = ('Denmark', 'Finland','Iceland', 'Norway', 'Sweden')
-a = 'Estonia'
-print(f'\'Estonia\'是否在 nordic_country: {a in nordic_countries}')
-b = 'Iceland'
+print(f'\'Estonia\'是否在 nordic_country: {"Estonia" in nordic_countries}')
 # 检查 'Iceland' 是否在 nordic_country 元组中
-print(f'\'Iceland\'是否在 nordic_country: {b in nordic_countries}')
+print(f'\'Iceland\'是否在 nordic_country: {"Iceland" in nordic_countries}')
