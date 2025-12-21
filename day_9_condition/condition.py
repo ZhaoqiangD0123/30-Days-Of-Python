@@ -17,15 +17,15 @@ else:
     print('a == b')
 
 # 编写代码，根据学生的分数给出等级：
-socre = float(input('输入你的分数：\n'))
-if socre>=80:
-    print('你的等级是A')
-elif 70 <= socre < 80:
-    print('你的等级是B')
-elif 60 <= socre < 70:
-    print('你的等级是C')
-elif 50 <= socre < 60:
-    print('你的等级是D')
+score = float(input('输入你的分数：\n'))
+if score >= 80:
+    print('A')
+elif score >= 70:
+    print('B')
+elif score >= 60:
+    print('C')
+elif score >= 50:
+    print('D')
 else:
     print('你的等级是E')
 
@@ -35,9 +35,9 @@ if Month in [9,10,11]:
     print('是秋天')
 elif Month in [12,1,2]:
     print('是冬天')
-elif Month in [2,3,4]:
+elif Month in [3,4,5]:
     print('是春天')
-elif Month in [5,6,7]:
+elif Month in [6,7,8]:
     print('是夏天')
 else:
     print('输入错误')
@@ -82,10 +82,10 @@ else:
 # 如果一个人的技能只有  和 React，打印('他是前端开发者')，如果一个人的技能有 Node、Python、MongoDB，打印('他是后端开发者')，如果一个人的技能有 React、Node 和 MongoDB，打印('他是全栈开发者')，否则打印'未知头衔' - 为获得更准确的结果，可以嵌套更多条件！
 skills = set(person['skills'])
 if {'React', 'Node', 'MongoDB'}.issubset(skills):
-    print(person['first_name'] + person['last_name'] + '是一个全栈开发者')
+    print(person['first_name'] + ' '+person['last_name'] + '是一个全栈开发者')
 elif {'Node','Python','MongoDB'}.issubset(skills):
-    print(person['first_name'] + person['last_name'] + '是一个后端开发者')
+    print(person['first_name'] +' '+ person['last_name'] + '是一个后端开发者')
 elif {'JavaScript','React'}.issubset(skills):
-    print(person['first_name'] + person['last_name'] + '是一个前端开发者')
+    print(person['first_name'] +' '+ person['last_name'] + '是一个前端开发者')
 else:
     print('未知头衔')
