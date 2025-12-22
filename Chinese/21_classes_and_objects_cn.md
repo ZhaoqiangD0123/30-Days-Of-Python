@@ -371,17 +371,18 @@ class Statistics:
 # 测试代码
 data = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
 statistics = Statistics(data)
-print('Count:', statistics.count()) # 25
-print('Sum: ', statistics.sum()) # 730
-print('Min: ', statistics.min()) # 24
-print('Max: ', statistics.max()) # 38
-print('Range: ', statistics.range()) # 14
-print('Mean: ', statistics.mean()) # 29.2
-print('Median: ', statistics.median()) # 27
-print('Mode: ', statistics.mode()) # {'mode': 26, 'count': 5}
-print('Standard Deviation: ', statistics.standard_deviation()) # 4.2
-print('Variance: ', statistics.variance()) # 17.5
-print('Frequency Distribution: ', statistics.frequency_distribution()) # [(24, 2), (25, 1), (26, 5), (27, 4), (29, 1), (31, 2), (32, 3), (33, 2), (34, 2), (37, 2), (38, 1)]
+print('Count:', statistics.count())  # 25
+print('Sum: ', statistics.total())  # 730
+print('Min: ', statistics.min())  # 24
+print('Max: ', statistics.max())  # 38
+print('Range: ', statistics.range())  # 14
+print('Mean: ', statistics.mean())  # 29.2
+print('Median: ', statistics.median())  # 27
+print('Mode: ', statistics.mode())  # {'mode': 26, 'count': 5}
+print('Standard Deviation: ', statistics.standard_deviation())  # 4.2
+print('Variance: ', statistics.variance())  # 17.5
+print('Frequency Distribution: ',
+      statistics.frequency_distribution())  # [(24, 2), (25, 1), (26, 5), (27, 4), (29, 1), (31, 2), (32, 3), (33, 2), (34, 2), (37, 2), (38, 1)]
 ```
 
 ### 练习：级别2
