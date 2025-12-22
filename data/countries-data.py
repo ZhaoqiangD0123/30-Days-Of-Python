@@ -1,4 +1,4 @@
-[
+countries_data = [
     {
         "name": "Afghanistan",
         "capital": "Kabul",
@@ -2618,3 +2618,75 @@
         "currency": "Botswana pula"
     }
 ]
+print(type(countries_data[0]))
+# 跳转到data文件夹并使用countries_data.py文件。
+# 数据中一共有多少个语言？
+language_set = set()
+for country_dic in countries_data:
+    language_list = country_dic.get('languages')
+    language_set.update(language_list)
+print(len(language_set))
+# 找到被最多国家使用的语言。
+language_total_list = list(language_set)
+language_total_dict = dict()
+for language in language_total_list:
+    language_total_dict[language] = 0
+print(len(language_total_dict))
+# print(language_total_dict.keys())
+for country_dic in countries_data:
+    language_list = country_dic.get('languages')
+    for language in language_list:
+        language_total_dict[language] += 1
+
+max_language = 0
+max_country = ''
+for i in language_total_dict:
+    if language_total_dict[i] > max_language:
+        max_country = i
+        max_language = language_total_dict[i]
+print(f'被最多国家使用的语言是{max_country},次数是{max_language}')
+
+# for language in language_list:
+#     for country_dic in countries_data:
+#         language_list = country_dic.get('languages')
+#         language_set.update(language_list)
+# print(len(language_set))
+
+# 找到人数排名前十的国家。
+count = 10
+min_people = 0
+countries_people = []
+new_population_name_dict = dict()
+for country_dic in countries_data:
+    new_population_name_dict[str(country_dic['population'])] = country_dic['name']
+    countries_people.append(country_dic['population'])
+countries_people.sort(reverse=True)
+countries_people = countries_people[0:10]
+
+# print(len(new_population_name_dict))
+print(countries_people)
+for population in countries_people:
+    print(new_population_name_dict[str(population)],end=', ')
+print()
+# 1. 创建一个列表，存 (人口, 名字)
+pop_list = []
+for country in countries_data:
+    pop_list.append((country['population'], country['name']))
+
+# 2. 排序 (默认会先比较第一个元素，也就是人口)
+# reverse=True 表示从大到小
+pop_list.sort(reverse=True)
+
+# 3. 切片取前10
+top_10 = pop_list[:10]
+print(top_10)
+# 4. 打印
+for pop, name in top_10:
+    print(f'{name}: {pop}')
+
+# 根据 population 进行降序排序
+countries_data.sort(key=lambda x: x['population'], reverse=True)
+
+# 取前10个字典
+for i in range(10):
+    print(f"{countries_data[i]['name']} - {countries_data[i]['population']}")
