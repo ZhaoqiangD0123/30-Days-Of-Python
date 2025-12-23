@@ -318,14 +318,47 @@ def is_only_type_list(lis):
 * **原因分析**: 使用了 `lis.sort()`，它是直接在原对象上操作的。
 * **解决方案**: 改用 `sorted(lis)`，它会返回一个新的排好序的列表，原数据不动。
 
-## 3. 💅 代码进化 (Before vs After)
+## 3. 💅 代码进化 Python 自带的计数神器collections
 
 **统计语言数量 (Before - 慢):**
 ```python
-# 每次 count 都要重新扫一遍全表
-for i in range(len(unique_langs)):
-    count = all_langs.count(unique_langs[i])
+# 引入 Python 自带的计数神器
 from collections import Counter
-# 一次扫描，瞬间完成
-counts = Counter(all_langs).most_common(10)
+
+# 1. 语言统计函数
+def most_spoken_languages(country_list, top_n=10):
+    # 第一步：提取所有语言放入一个大列表
+    all_languages = []
+    for country in country_list:
+        all_languages.extend(country['languages'])
+    
+    # 第二步：使用 Counter 瞬间统计 (效率极高)
+    # Counter 自动帮你做成了 {'English': 90, 'French': 45...}
+    counts = Counter(all_languages)
+    
+    # 第三步：Counter 自带的提取前 N 名的方法
+    # 它直接返回 [(91, 'English'), (45, 'French')...] 格式
+    return counts.most_common(top_n)
+
+# 2. 人口统计函数
+def most_populated_countries(country_list, top_n=10):
+    # 第一步：使用 sorted 创建新列表，不修改原数据
+    # 注意：sorted 返回的是新列表
+    sorted_countries = sorted(
+        country_list, 
+        key=lambda x: x['population'], 
+        reverse=True
+    )
+    
+    # 第二步：提取前 N 名
+    # 列表推导式提取我们需要的信息
+    return [
+        {'country': c['name'], 'population': c['population']} 
+        for c in sorted_countries[:top_n]
+    ]
+
+# --- 测试调用 ---
+# 这里的 countries_data 假设是你导入的数据
+print("Top 10 Languages:", most_spoken_languages(countries_data, 10))
+print("Top 10 Populations:", most_populated_countries(countries_data, 10))
 ```
