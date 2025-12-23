@@ -2618,75 +2618,144 @@ countries_data = [
         "currency": "Botswana pula"
     }
 ]
-print(type(countries_data[0]))
-# 跳转到data文件夹并使用countries_data.py文件。
-# 数据中一共有多少个语言？
-language_set = set()
-for country_dic in countries_data:
-    language_list = country_dic.get('languages')
-    language_set.update(language_list)
-print(len(language_set))
-# 找到被最多国家使用的语言。
-language_total_list = list(language_set)
-language_total_dict = dict()
-for language in language_total_list:
-    language_total_dict[language] = 0
-print(len(language_total_dict))
-# print(language_total_dict.keys())
-for country_dic in countries_data:
-    language_list = country_dic.get('languages')
-    for language in language_list:
-        language_total_dict[language] += 1
 
-max_language = 0
-max_country = ''
-for i in language_total_dict:
-    if language_total_dict[i] > max_language:
-        max_country = i
-        max_language = language_total_dict[i]
-print(f'被最多国家使用的语言是{max_country},次数是{max_language}')
 
-# for language in language_list:
-#     for country_dic in countries_data:
-#         language_list = country_dic.get('languages')
-#         language_set.update(language_list)
+# print(type(countries_data[0]))
+# # 跳转到data文件夹并使用countries_data.py文件。
+# # 数据中一共有多少个语言？
+# language_set = set()
+# for country_dic in countries_data:
+#     language_list = country_dic.get('languages')
+#     language_set.update(language_list)
 # print(len(language_set))
+# # 找到被最多国家使用的语言。
+# language_total_list = list(language_set)
+# language_total_dict = dict()
+# for language in language_total_list:
+#     language_total_dict[language] = 0
+# print(len(language_total_dict))
+# # print(language_total_dict.keys())
+# for country_dic in countries_data:
+#     language_list = country_dic.get('languages')
+#     for language in language_list:
+#         language_total_dict[language] += 1
+#
+# max_language = 0
+# max_country = ''
+# for i in language_total_dict:
+#     if language_total_dict[i] > max_language:
+#         max_country = i
+#         max_language = language_total_dict[i]
+# print(f'被最多国家使用的语言是{max_country},次数是{max_language}')
+#
+# # for language in language_list:
+# #     for country_dic in countries_data:
+# #         language_list = country_dic.get('languages')
+# #         language_set.update(language_list)
+# # print(len(language_set))
+#
+# # 找到人数排名前十的国家。
+# count = 10
+# min_people = 0
+# countries_people = []
+# new_population_name_dict = dict()
+# for country_dic in countries_data:
+#     new_population_name_dict[str(country_dic['population'])] = country_dic['name']
+#     countries_people.append(country_dic['population'])
+# countries_people.sort(reverse=True)
+# countries_people = countries_people[0:10]
+#
+# # print(len(new_population_name_dict))
+# print(countries_people)
+# for population in countries_people:
+#     print(new_population_name_dict[str(population)],end=', ')
+# print()
+# # 1. 创建一个列表，存 (人口, 名字)
+# pop_list = []
+# for country in countries_data:
+#     pop_list.append((country['population'], country['name']))
+#
+# # 2. 排序 (默认会先比较第一个元素，也就是人口)
+# # reverse=True 表示从大到小
+# pop_list.sort(reverse=True)
+#
+# # 3. 切片取前10
+# top_10 = pop_list[:10]
+# print(top_10)
+# # 4. 打印
+# for pop, name in top_10:
+#     print(f'{name}: {pop}')
+#
+# # 根据 population 进行降序排序
+# countries_data.sort(key=lambda x: x['population'], reverse=True)
+#
+# # 取前10个字典
+# for i in range(10):
+#     print(f"{countries_data[i]['name']} - {countries_data[i]['population']}")
+#
 
-# 找到人数排名前十的国家。
-count = 10
-min_people = 0
-countries_people = []
-new_population_name_dict = dict()
-for country_dic in countries_data:
-    new_population_name_dict[str(country_dic['population'])] = country_dic['name']
-    countries_people.append(country_dic['population'])
-countries_people.sort(reverse=True)
-countries_people = countries_people[0:10]
+# # 创建一个名为 the most_spoken_languages 的函数。它返回世界上使用最多的 10 或 20 种语言，按降序排列。
+# def the_most_spoken_languages(lis=countries_data):
+#     lis_language = []
+#     for country in lis:
+#         lis_language += country['languages']
+#     st_language_list = list(set(lis_language))
+#     languages = []
+#     for i in range(len(st_language_list)):
+#         languages.append((lis_language.count(st_language_list[i]), st_language_list[i]))
+#     languages.sort(reverse=True)
+#     for i in range(10):
+#         print(f"{languages[i][1]}---{languages[i][0]}")
+#     return None
+# the_most_spoken_languages()
+#
+#
+# # 创建一个名为 the most_populated_countries 的函数。它返回世界上人口最多的 10 或 20 个国家，按降序排列。
+# def the_most_populated_countries(lis=countries_data):
+#     lis.sort(key=lambda x: x['population'], reverse=True)
+#     for i in range(20):
+#         print(f"{lis[i]['name']}---{lis[i]['population']}")
+#
+# the_most_populated_countries()
+# 引入 Python 自带的计数神器
+from collections import Counter
 
-# print(len(new_population_name_dict))
-print(countries_people)
-for population in countries_people:
-    print(new_population_name_dict[str(population)],end=', ')
-print()
-# 1. 创建一个列表，存 (人口, 名字)
-pop_list = []
-for country in countries_data:
-    pop_list.append((country['population'], country['name']))
 
-# 2. 排序 (默认会先比较第一个元素，也就是人口)
-# reverse=True 表示从大到小
-pop_list.sort(reverse=True)
+# 1. 语言统计函数
+def most_spoken_languages(country_list, top_n=10):
+    # 第一步：提取所有语言放入一个大列表
+    all_languages = []
+    for country in country_list:
+        all_languages.extend(country['languages'])
 
-# 3. 切片取前10
-top_10 = pop_list[:10]
-print(top_10)
-# 4. 打印
-for pop, name in top_10:
-    print(f'{name}: {pop}')
+    # 第二步：使用 Counter 瞬间统计 (效率极高)
+    # Counter 自动帮你做成了 {'English': 90, 'French': 45...}
+    counts = Counter(all_languages)
 
-# 根据 population 进行降序排序
-countries_data.sort(key=lambda x: x['population'], reverse=True)
+    # 第三步：Counter 自带的提取前 N 名的方法
+    # 它直接返回 [(91, 'English'), (45, 'French')...] 格式
+    return counts.most_common(top_n)
 
-# 取前10个字典
-for i in range(10):
-    print(f"{countries_data[i]['name']} - {countries_data[i]['population']}")
+
+# 2. 人口统计函数
+def most_populated_countries(country_list, top_n=10):
+    # 第一步：使用 sorted 创建新列表，不修改原数据
+    # 注意：sorted 返回的是新列表
+    sorted_countries = sorted(
+        country_list,
+        key=lambda x: x['population'],
+        reverse=True
+    )
+
+    # 第二步：提取前 N 名
+    # 列表推导式提取我们需要的信息
+    return [
+        {'country': c['name'], 'population': c['population']}
+        for c in sorted_countries[:top_n]
+    ]
+
+
+# --- 测试调用 ---
+# 这里的 countries_data 假设是你导入的数据
+print("Top 10 Languages:", most_spoken_languages(countries_data, 10))
+print("Top 10 Populations:", most_populated_countries(countries_data, 10))
