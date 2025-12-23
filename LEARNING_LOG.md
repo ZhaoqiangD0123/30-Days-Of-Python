@@ -272,3 +272,60 @@ countries_data.sort(key=get_population, reverse=True)
  这行代码 countries_data.sort(key=lambda x: x['population'], reverse=True) 是处理复杂列表排序的标准答案。
  **什么时候用？** 当你有一个列表，里面装的是**字典**或**元组**，而你想根据里面的某一个字段进行排序时。
 ---
+
+# Day 11: 函数与防御性编程
+
+## 1. 🧠 核心概念
+* **`*args`**: 用于接收不定数量的参数，在函数内部它是一个元组。
+* **`all()` 函数**: Python 的神级内置函数，用于判断“是不是全都满足条件”，比手写 for 循环判断更优雅。
+* **无副作用 (No Side Effects)**: **检查类**的函数（如 check_type）绝对不能修改传入的列表（如排序），否则会破坏原始数据。
+
+## 2. 💣 踩坑记录 (Error Log)
+* **错误现象**: `ZeroDivisionError: division by zero`
+* **原因分析**: 计算斜率 `k = -a / b` 时，没有检查 `b` 是否为 0。
+* **解决方案**: 在除法前必须加 `if b == 0:` 的卫语句判断。
+
+* **错误现象**: 列表顺序莫名其妙变了。
+* **原因分析**: 在做类型检查时使用了 `lis.sort()`，导致原列表被原地排序。
+* **解决方案**: 避免使用 `sort` 做检查，或使用 `sorted(lis)` 创建新列表（但更推荐用 `all()`）。
+
+## 3. 💅 代码进化 (Before vs After)
+
+**检查全类型一致 (Before):**
+```python
+# 这种写法既慢又破坏数据
+def is_only_type_list(lis):
+    lis.sort(key=lambda x: str(type(x))) # ❌ 修改了原列表！
+    return str(type(lis[0])) == str(type(lis[-1]))
+  # 优雅、快速、无副作用
+def is_only_type_list(lis):
+    # 取第一个元素的类型做标尺
+    return all(isinstance(x, type(lis[0])) for x in lis)
+ ```
+## Tips 列表推导式
+
+
+
+# Day 11 (Advanced): 性能优化与副作用
+
+## 1. 🧠 核心概念
+* **`list.count()` 的性能陷阱**: 在循环里使用 `.count()` 会导致程序极慢 ($O(N^2)$)。统计数量时，永远优先考虑 **字典 (Dict)** 或 **`collections.Counter`** ($O(N)$)。
+* **In-place Sort (原地排序)**: `list.sort()` 会永久修改原列表顺序。
+* **Side Effects (副作用)**: 函数不应该偷偷修改传入的数据。如果只是为了展示排序结果，使用 `sorted(list)` 创建新副本。
+
+## 2. 💣 踩坑记录 (Error Log)
+* **错误现象**: 虽然代码能跑，但修改了全局的 `countries_data` 顺序。
+* **原因分析**: 使用了 `lis.sort()`，它是直接在原对象上操作的。
+* **解决方案**: 改用 `sorted(lis)`，它会返回一个新的排好序的列表，原数据不动。
+
+## 3. 💅 代码进化 (Before vs After)
+
+**统计语言数量 (Before - 慢):**
+```python
+# 每次 count 都要重新扫一遍全表
+for i in range(len(unique_langs)):
+    count = all_langs.count(unique_langs[i])
+from collections import Counter
+# 一次扫描，瞬间完成
+counts = Counter(all_langs).most_common(10)
+```
