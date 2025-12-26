@@ -48,5 +48,7 @@ names = [[('Asabeneh', 'Yetayeh')], [('David', 'Smith')], [('Donald', 'Trump')],
 name_dic = [a +' '+ b for lis in names for a,b in lis]
 print(name_dic)
 # 输出:
+
 # ['Asabeneh Yetayeh', 'David Smith', 'Donald Trump', 'Bill Gates']
+
 
