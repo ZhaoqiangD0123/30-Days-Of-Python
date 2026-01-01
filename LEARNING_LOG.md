@@ -362,3 +362,19 @@ def most_populated_countries(country_list, top_n=10):
 print("Top 10 Languages:", most_spoken_languages(countries_data, 10))
 print("Top 10 Populations:", most_populated_countries(countries_data, 10))
 ```
+# Day [14]: [高阶函数]
+
+## 1. 🧠 核心概念 (一句话总结)
+* **概念 1**: [ 什么是高阶函数？
+定义很简单：一个函数，如果它能接收另一个函数作为参数，或者返回一个函数，那它就是高阶函数。]
+* **概念 2**：[三大神器：Map, Filter, Reduce]
+
+## 2. 💣 踩坑记录 (Error Log)
+> 记录报错或逻辑错误，防止下次再犯。
+
+* **错误现象**: [例如：使用了内置函数名 sum 作为变量名]
+* **原因分析**: [例如：覆盖了全局函数，导致后续无法求和]
+* **解决方案**: [例如：改名为 total_sum]
+
+## 3. 代码进化 (Before vs After)
+> 对比修改前后的代码，体会 Pythonic 的写法。
