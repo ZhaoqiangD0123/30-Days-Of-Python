@@ -38,7 +38,6 @@ A2 = net_asset('Wang', 'Xiaoming', 20000, 12000)
 A2.info_Person()
 A2.count_asset()
 
-
 class print_product:
     def print_products(*args, **kwargs):
         for product in args:
