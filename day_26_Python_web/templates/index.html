@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的主页</title>
+</head>
+<body>
+    <h1>欢迎来到数据中心 📊</h1>
+    <p>这里是 Python 渲染的网页。</p>
+    <h3>当前用户: {{ user_name }}</h3>
+
+    <h3>我的技能树:</h3>
+    <ul>
+        {% for skill in skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>数据分析报告 📑</h1>
+    <p>总行数: <b>{{ row_count }}</b></p>
+    <p>列名: {{ cols }}</p>
+    <hr>
+    <h3>前5行数据预览:</h3>
+    {{ table | safe }}
+</body>
+</html>
